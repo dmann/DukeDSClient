@@ -1,0 +1,13 @@
+# With docker:
+#   docker build -t ddsclient .
+#   docker run -v $HOME/.ddsclient:/root/.ddsclient -v `pwd`:/data_dir --workdir /data_dir ddsclient
+# With docker-compose:
+#   docker-compose -f ~/projects/DukeDSClient/docker-compose.yml run ddsclient
+version: '2'
+services:
+  ddsclient:
+    build: .
+    volumes:
+      - $HOME/.ddsclient:/root/.ddsclient
+      - $PWD:/data_dir
+    working_dir: /data_dir
